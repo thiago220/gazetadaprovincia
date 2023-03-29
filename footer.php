@@ -1,6 +1,6 @@
         <div class="ads-banner-full container"></div>
         <footer class="text-center py-2 font-bold"> 
-            <div class="container my-3">
+            <!-- <div class="container my-3">
                 <div class="row">
                     <div class="col">
                         <a href="https://linkedin.com/company/gazetadaprovincia" target="_blank" title="Gazeta da Província">
@@ -9,7 +9,7 @@
                         <a href="https://www.facebook.com/gazetadeprovincia/" target="_blank" title="Gazeta da Província">
                             <img src="<?php echo get_template_directory_uri()."/img/icones/002-facebook.png"?>" class="d-inline-block align-top" alt="Gazeta da Província">                
                         </a>
-                        <a href="https://api.whatsapp.com/send?phone=5531984938463&text=Envie-nos%20uma%20mensagem!" target="_blank" title="Gazeta da Província">
+                        <a href="https://api.whatsapp.com/send?phone=5531975108384&text=Envie-nos%20uma%20mensagem!" target="_blank" title="Gazeta da Província">
                             <img src="<?php echo get_template_directory_uri()."/img/icones/003-whatsapp.png"?>" class="d-inline-block align-top" alt="Gazeta da Província">                
                         </a>
                         <a href="https://www.instagram.com/gazetadaprovincia/" target="_blank" title="Gazeta da Província">
@@ -17,7 +17,7 @@
                         </a>
                     </div>
                 </div>
-            </div>
+            </div> -->
             <p>
                 2017 - <?=date('Y')?> <a class="navbar-brand" href="<?=get_site_url()?>"><img src="<?php echo get_template_directory_uri()."/img/Logotipo_branca_sem_fundo120x50.png"?>" alt="Gazeta da Província"></a>&copy, todos os direitos reservados. 
             </p>

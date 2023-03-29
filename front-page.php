@@ -4,26 +4,26 @@
         <h1 class="d-none">Gazeta da Província</h1>
         <div class="row">
             <div class="col-12 col-md-9">
-                <h2 class="my-1">Últimas Notícias</h2>                
-                <p>Não soube das novidades na cidade? Abaixo o que o povo anda comentando.</p>                
+                <h2 class="my-1">Últimas Notícias</h2>
+                <p>Não soube das novidades na cidade? Abaixo o que o povo anda comentando.</p>
                 <?php
                 if (have_posts()) : $i = 0;
                     while (have_posts()) : the_post();
-                        if ($i == 5):
-                            ?>
+                        if ($i == 5) :
+                ?>
                             <div id="ads"></div>
-                            <?php
+                        <?php
                         endif;
                         $i++
                         ?>
-                        <div class="media py-1 border my-1"> 
+                        <div class="media py-1 border my-1">
                             <?php
                             if (has_post_thumbnail()) {
                                 the_post_thumbnail('thumbnail', ['class' => 'mr-3']);
                             } else {
-                                echo("<img class='mr-3' src='https://gazetadaprovincia.jor.br/wp-content/themes/gazetadaprovincia/img/sem-imagem.jpg' alt='Sem Imagem' width='150px' height='a50px' />");
+                                echo ("<img class='mr-3' src='https://gazetadaprovincia.jor.br/wp-content/themes/gazetadaprovincia/img/sem-imagem.jpg' alt='Sem Imagem' width='150px' height='a50px' />");
                             }
-                            ?> 
+                            ?>
                             <div class="media-body p-2">
                                 <a href="<?php the_permalink() ?>">
                                     <h5 class="mt-0"><?php the_title(); ?></h5>
@@ -39,95 +39,101 @@
                                 <p>
                                     <small><?php wp_get_post_categories($args) ?></small>
                                 </p>
-                                <a class="d-none d-md-block"  href="<?php the_permalink() ?>">
+                                <a class="d-none d-md-block" href="<?php the_permalink() ?>">
                                     <?php the_excerpt() ?>
                                 </a>
                             </div>
-                        </div>                        
+                        </div>
 
-                        <?php
+                <?php
                     endwhile;
                     page_navi("<div class='w-100 p-1 d-flex justify-content-center align-items-center'>", "</div>");
                 endif;
                 wp_reset_query();
-                ?>                
+                ?>
             </div>
-            <div class="col-12 col-md-3 border my-3">
-                <div>
-                    <h2>Colunas</h2>
-                    <?php
-                    $categories = get_terms('category', array(
-                        'orderby' => 'title',
-                        'parent' => 20
-                            )
-                    );
 
-                    foreach ($categories as $category):
-                        $args = array(
-                            'cat' => $category->term_id,
-                            'post_type' => 'post',
-                            'posts_per_page' => '1',
-                            'orderby' => 'date',
-                            'order' => 'DESC'
-                        );
 
-                        $query = new WP_Query($args);
+            <?php
+            $categories = get_terms(
+                'category',
+                array(
+                    'orderby' => 'title',
+                    'parent' => 20
+                )
+            );
 
-                        if ($query->have_posts()):
-                            while ($query->have_posts()):
+            foreach ($categories as $category) :
+                $args = array(
+                    'cat' => $category->term_id,
+                    'post_type' => 'post',
+                    'posts_per_page' => '1',
+                    'orderby' => 'date',
+                    'order' => 'DESC'
+                );
+
+                $query = new WP_Query($args);
+
+                if ($query->have_posts()) :
+            ?>
+                    <div class="col-12 col-md-3 border my-3">
+                        <div>
+                            <h2>Colunas</h2>
+                            <?php while ($query->have_posts()) :
                                 $query->the_post();
-                                ?>
-                                <h4><?= $category->name ?></h4><small>por <?php the_author_posts_link(); ?></small><p><a href="<?php the_permalink() ?>"><?php the_title() ?></a></p>
-                                <?php
-                            endwhile;
+                            ?>
+                                <h4><?= $category->name ?></h4><small>por <?php the_author_posts_link(); ?></small>
+                                <p><a href="<?php the_permalink() ?>"><?php the_title() ?></a></p>
+                    <?php   endwhile; ?>
+                    </div>
+                    <?php
                         endif;
                     endforeach;
                     wp_reset_postdata();
                     ?>
-                </div>
-                <div class="ads-square">
+                        <div class="ads-square">
 
-                </div>
-                <div> 
-                    <?php
-                    $args = array(
-                        'post_type' => array('post'),
-                        'posts_per_page' => 3,
-                        'ignore_sticky_posts' => 1,
-                        'meta_key' => 'wpb_post_views_count',
-                        'orderby' => 'meta_value_num',
-                        'order' => 'DESC',
-                        'date_query' => array(
-                            array(
-                                'after' => '1 week ago'
-                            )
-                        )
-                    );
-                    // The Query
-                    $query_trending = new WP_Query($args);
-                    // The Loop
-                    if ($query_trending->have_posts()):
-                        ?>
-                        <h2 class="my-2">Mais visualizadas na semana</h2>
-                        <?php while ($query_trending->have_posts()) : $query_trending->the_post(); ?>
-                            <p class="my-1">
-                                <a href="<?php the_permalink() ?>">
-                                    <?php
-                                    if (has_post_thumbnail()) {
-                                        the_post_thumbnail('medium', ['class' => 'img-fluid d-block mx-auto']);
-                                    }
-                                    ?> 
-                                    <h5><?php the_title(); ?></h5>
-                                </a>
-                            </p>
-                        <?php endwhile; ?>
-                        <?php
-                    endif;
-                    wp_reset_query();
-                    ?>
-                </div>
-            </div>
-        </div>         
+                        </div>
+                        <div>
+                            <?php
+                            $args = array(
+                                'post_type' => array('post'),
+                                'posts_per_page' => 3,
+                                'ignore_sticky_posts' => 1,
+                                'meta_key' => 'wpb_post_views_count',
+                                'orderby' => 'meta_value_num',
+                                'order' => 'DESC',
+                                'date_query' => array(
+                                    array(
+                                        'after' => '1 week ago'
+                                    )
+                                )
+                            );
+                            // The Query
+                            $query_trending = new WP_Query($args);
+                            // The Loop
+                            if ($query_trending->have_posts()) :
+                            ?>
+                                <h2 class="my-2">Mais visualizadas na semana</h2>
+                                <?php while ($query_trending->have_posts()) : $query_trending->the_post(); ?>
+                                    <p class="my-1">
+                                        <a href="<?php the_permalink() ?>">
+                                            <?php
+                                            if (has_post_thumbnail()) {
+                                                the_post_thumbnail('medium', ['class' => 'img-fluid d-block mx-auto']);
+                                            }
+                                            ?>
+                                            <h5><?php the_title(); ?></h5>
+                                        </a>
+                                    </p>
+                                <?php endwhile; ?>
+                            <?php
+                            endif;
+                            wp_reset_query();
+                            ?>
+                        </div>
+                    </div>
+        </div>
         <?php
         // WP_Query arguments
         $argsObituario = array(
@@ -139,8 +145,8 @@
             'posts_per_page' => -1,
         );
         $query_obituario = new WP_Query($argsObituario);
-        if ($query_obituario->have_posts()):
-            ?>
+        if ($query_obituario->have_posts()) :
+        ?>
             <h2 class="my-1">Obituário</h2>
             <?php
             $listaMote = array(
@@ -162,20 +168,20 @@
                     <img src="<?php echo get_template_directory_uri() . "/img/anjo-esq.png" ?>" class="mx-auto" alt="Gazeta da Província">
                 </div>
                 <div class="d-block col col-md-6">
-                    <div class="row">                
-                        <?php while ($query_obituario->have_posts()) : $query_obituario->the_post() ?>                    
+                    <div class="row">
+                        <?php while ($query_obituario->have_posts()) : $query_obituario->the_post() ?>
                             <div class="col-6 col-md-4 border">
                                 <a href="<?= the_permalink() ?>">
-                                    <div class="text-center m-1"> 
+                                    <div class="text-center m-1">
                                         <h5 class="mt-0"><?= the_title() ?></h5>
                                         <div class="row">
                                             <div class="col-6">
                                                 <?php
                                                 switch (get_post_meta(get_the_ID(), 'religiao', TRUE)) {
                                                     case 1:
-                                                        echo("<img class='img-fluid mx-auto' src='" . get_template_directory_uri() . "/img/cruz-catolica.png'  data-toggle='tooltip' data-placement='right' title='Católico' />");
+                                                        echo ("<img class='img-fluid mx-auto' src='" . get_template_directory_uri() . "/img/cruz-catolica.png'  data-toggle='tooltip' data-placement='right' title='Católico' />");
                                                     default:
-                                                        echo("<img class='img-fluid mx-auto' src='" . get_template_directory_uri() . "/img/cruz-catolica.png'  data-toggle='tooltip' data-placement='right' title='Católico' />");
+                                                        echo ("<img class='img-fluid mx-auto' src='" . get_template_directory_uri() . "/img/cruz-catolica.png'  data-toggle='tooltip' data-placement='right' title='Católico' />");
                                                 }
                                                 ?>
                                             </div>
@@ -186,11 +192,11 @@
 
                                     </div>
                                 </a>
-                            </div>             
+                            </div>
                         <?php endwhile; ?>
                     </div>
                 </div>
-                <div class="d-none d-md-block col-md-3">                
+                <div class="d-none d-md-block col-md-3">
                     <img src="<?php echo get_template_directory_uri() . "/img/anjo-dir.png" ?>" class="mx-auto" alt="Gazeta da Província">
                 </div>
             </div>
