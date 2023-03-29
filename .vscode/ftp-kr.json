@@ -1,0 +1,16 @@
+{
+    "host": "gazetadaprovincia.com.br",
+    "username": "u965448214",
+    "password": "Randolf1@",
+    "remotePath": "/domains/gazetadaprovincia.com.br/public_html/wp-content/themes/gazeta-da-provincia",
+    "protocol": "ftp",
+    "port": 21,
+    "fileNameEncoding": "utf8",
+    "autoUpload": true,
+    "autoDelete": true,
+    "autoDownload": false,
+    "ignore": [
+        ".git",
+        "/.vscode"
+    ]
+}

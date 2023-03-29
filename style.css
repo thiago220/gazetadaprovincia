@@ -1,0 +1,114 @@
+/*
+    Theme Name: Gazeta da Província
+    Author: Thiago Souza Dias
+    Author URI: https://www.facebook.com/thiagodiasjor/
+    Description: Template para uso do jornal Gazeta da Província.
+    Version: 1.0
+    License: Comercial
+    Text Domain: gazetadaprovincia
+*/
+
+@font-face {
+    font-family: CloisterBlack;
+    src: url(fonts/CloisterBlack.ttf);
+}
+
+@font-face {
+    font-family: CloisterBlack;
+    src: url(fonts/CloisterBlack.ttf);
+}
+
+@font-face {
+    font-family: EileenCapsBlack;
+    src: url(fonts/EICBL__.TTF);
+}
+
+@font-face {
+    font-family: EileenCaps;
+    src: url(fonts/eicap__.TTF);
+}
+
+@font-face {
+    font-family: TravelingTypewriter;
+    src: url(fonts/TravelingTypewriter.ttf);
+}
+
+.capitular
+{
+    font-family: EileenCaps;
+}
+
+body
+{
+    font-family: TravelingTypewriter;
+}
+
+h1, h2, h3, h4, h5, h6
+{
+    font-family: CloisterBlack;
+}
+
+a
+{
+    text-decoration: none;
+    color: black;
+}
+
+article#artigos a
+{
+    text-decoration:underline;
+}
+
+article#artigos h1 a
+{
+    text-decoration:none;
+}
+
+a:hover
+{
+    color: #666;
+    text-decoration: none;
+}
+
+footer
+{
+    color: white;
+    background: black;
+}
+
+footer a, footer a:hover
+{
+    color: white;    
+    text-decoration: none;
+} 
+
+/*
+ * front-page
+ */
+
+.mote-obituario
+{
+    font-family: CloisterBlack;
+    font-size: 30px;
+}
+
+.mote-obituario:first-letter
+{
+    font-family: EileenCapsBlack;
+}
+
+.mote-obituario small
+{
+    font-family: TravelingTypewriter;
+    font-size: 15px;
+}
+
+.colunas
+{
+    list-style: none;
+}
+
+cite
+{
+    text-indent: 20px;
+}
