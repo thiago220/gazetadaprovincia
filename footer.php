@@ -25,4 +25,4 @@
         <script type="text/javascript" src="//downloads.mailchimp.com/js/signup-forms/popup/unique-methods/embed.js" data-dojo-config="usePlainJson: true, isDebug: false"></script><script type="text/javascript">window.dojoRequire(["mojo/signup-forms/Loader"], function(L) { L.start({"baseUrl":"mc.us19.list-manage.com","uuid":"71ac97e86f996622a7223570c","lid":"65ddef06b6","uniqueMethods":true}) })</script>
         <?php wp_footer(); ?>       
     </body>
-</html>
+</html> 

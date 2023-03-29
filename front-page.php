@@ -3,8 +3,8 @@
     <div class="container">
         <h1 class="d-none">Gazeta da Província</h1>
         <div class="row">
-            <div class="col-12 col-md-9">
-                <h2 class="my-1">Últimas Notícias</h2>
+            <div class="col">
+                <h2 class="my-1">Últimas Publicações</h2>
                 <p>Não soube das novidades na cidade? Abaixo o que o povo anda comentando.</p>
                 <?php
                 if (have_posts()) : $i = 0;
@@ -85,7 +85,7 @@
                                 <h4><?= $category->name ?></h4><small>por <?php the_author_posts_link(); ?></small>
                                 <p><a href="<?php the_permalink() ?>"><?php the_title() ?></a></p>
                     <?php   endwhile; ?>
-                    </div>
+                        </div>
                     <?php
                         endif;
                     endforeach;
@@ -94,7 +94,7 @@
                         <div class="ads-square">
 
                         </div>
-                        <div>
+                       <!-- <div>
                             <?php
                             $args = array(
                                 'post_type' => array('post'),
@@ -131,7 +131,7 @@
                             endif;
                             wp_reset_query();
                             ?>
-                        </div>
+                        </div> -->
                     </div>
         </div>
         <?php
